@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Gomba.MenüView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sampleData="clr-namespace:Gomba"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:cal="http://www.caliburnproject.org"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+      <UserControl.Resources>
+        <sampleData:RadTreeViewXmlDataSource x:Key="treeViewData"
+        Source="Gomba;component/Erőforrások/GombaMenü.xml"/>
+        <!-- assemblyname;component/relativepath
+        YearBook;component/Resources/Images/darkaurora.png -->
+
+        <HierarchicalDataTemplate x:Key="Item" ItemsSource="{Binding Items}">
+            <TextBlock Text="{Binding Header}" />
+        </HierarchicalDataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <telerik:RadTreeView x:Name="Menülista" ExpanderStyle="{StaticResource ExpanderStyle}"
+            ItemTemplate="{StaticResource Item}"
+            ItemsSource="{Binding Source={StaticResource treeViewData}}"
+                             SelectedItem="{Binding Path=MegfogottMenüsor}"
+                             cal:Message.Attach="[Event MouseDoubleClick] = [Action RadTreeView_MouseDoubleClick($source)]">
+        </telerik:RadTreeView>
+        <!-- http://stackoverflow.com/questions/9487084/getting-row-information-after-a-doubleclick-->
+
+    </Grid>
+</UserControl>

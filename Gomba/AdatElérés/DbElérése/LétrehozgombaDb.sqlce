@@ -1,0 +1,57 @@
+-- Script Date: 2015. 11. 16. 18:29  - ErikEJ.SqlCeScripting version 3.5.2.56
+DROP TABLE [Dolgozo];
+CREATE TABLE [Dolgozo] (
+  [Id] INTEGER PRIMARY KEY   AUTOINCREMENT
+, [Nev] nvarchar  NULL
+, [SzuletesIdeje] datetime NOT NULL
+, [Adoszam] nvarchar  NULL
+, [Kod] nvarchar  NULL
+);
+DROP TABLE [Lada];
+CREATE TABLE [Lada] (
+  [Id] INTEGER PRIMARY KEY   AUTOINCREMENT
+, [Kod] nvarchar  NULL
+, [Nev] nvarchar  NULL
+, [Tara] decimal NOT NULL
+, [Brutto] decimal NOT NULL
+, [TaraTolTobb] decimal NOT NULL
+, [TaraTolKevesebb] decimal NOT NULL
+, [BruttoTolTobb] decimal NOT NULL
+, [BruttoTolKevesebb] decimal NOT NULL
+);
+DROP TABLE [Kezeko];
+CREATE TABLE [Kezelo] (
+  [Id] INTEGER PRIMARY KEY   AUTOINCREMENT
+, [Kod] nvarchar  NULL
+, [Nev] nvarchar  NULL
+, [UjAdat] int NOT NULL
+, [Kimutatas] int NOT NULL
+, [Beallitas] int NOT NULL
+, [Jog1] int NOT NULL
+, [Jog2] int NOT NULL
+, [Jog3] int NOT NULL
+, [Jog4] int NOT NULL
+, [Jog5] int NOT NULL
+, [Jog6] int NOT NULL
+, [Jog7] int NOT NULL
+);
+DROP TABLE [Beallitas];
+CREATE TABLE [Beallitas] (
+  [Id] INTEGER PRIMARY KEY   AUTOINCREMENT
+, [Megnevezes] nvarchar  NULL
+, [Erteke] nvarchar  NULL
+);
+DROP TABLE [Meres];
+CREATE TABLE [Meres] (
+  [Id] INTEGER PRIMARY KEY   AUTOINCREMENT
+, [DolgozoId] INTEGER NOT NULL
+, [LadaId] INTEGER NOT NULL
+, [Tomeg] decimal NOT NULL
+, [Ido] datetime NOT NULL
+, [Helye] nvarchar  NOT NULL
+, FOREIGN KEY ([LadaId]) REFERENCES [Lada] ([Id]) ON DELETE CASCADE ON UPDATE NO ACTION
+, FOREIGN KEY ([DolgozoId]) REFERENCES [Dolgozo] ([Id]) ON DELETE CASCADE ON UPDATE NO ACTION
+);
+CREATE INDEX [IX_Meres_LadaId_Meres] ON [Meres] ([LadaId] ASC);
+CREATE INDEX [IX_Meres_DolgozoId_Meres] ON [Meres] ([DolgozoId] ASC);
+COMMIT;

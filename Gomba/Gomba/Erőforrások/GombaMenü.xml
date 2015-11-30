@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Items>
+  <XmlNodeItem Header="Törzsadatok" Tag="">
+    <Items>
+      <XmlNodeItem Header="Gombaszedők" Tag="Gombaszedők" />
+      <XmlNodeItem Header="Program kezelők" Tag="Program kezelők" />
+      <XmlNodeItem Header="Ládák" Tag="Ládák" />
+    </Items>
+  </XmlNodeItem>
+  <XmlNodeItem Header="Lekérdezés" Tag="Lekérdezés">
+  </XmlNodeItem>
+  <XmlNodeItem Header="Nyomtatások" Tag="Nyomtatások">
+  </XmlNodeItem>
+  <XmlNodeItem Header="Karbantartás" Tag="Karbantartás">
+  </XmlNodeItem>
+</Items>
